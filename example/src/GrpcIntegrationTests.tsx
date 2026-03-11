@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 import { View, Text, Button, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 import { HelloRequestImpl, HelloResponseImpl } from './generated/hello_types';
 import { HelloServiceClient } from './generated/hello_services';
 import { GRPCBinClient } from './generated/grpcbin_services';

@@ -2,7 +2,7 @@
  * React Native compatible NeoFS Session client.
  */
 
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 
 import { SessionServiceClient } from '../../gen-grpc-react-native/session/service_services';
 import {

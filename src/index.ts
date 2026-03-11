@@ -1,5 +1,5 @@
 // Re-export from core (crypto, user, types, utils)
-export * from 'neofs-sdk-ts-core';
+export * from '@axlabs/neofs-sdk-ts-core';
 
 // Export React Native specific clients
 export * from './client';

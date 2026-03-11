@@ -2,7 +2,7 @@
  * React Native compatible NeoFS Accounting client.
  */
 
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 
 import { NeoFsV2Refs } from '../../gen-grpc-react-native/refs/types_types';
 import { AccountingServiceClient } from '../../gen-grpc-react-native/accounting/service_services';

@@ -6,7 +6,7 @@
  * 
  * @example
  * ```typescript
- * import { BearerToken, publicReadEACL, Table, Target, Operation } from 'neofs-sdk-ts-react-native';
+ * import { BearerToken, publicReadEACL, Table, Target, Operation } from 'neofs-sdk-ts-rn';
  * 
  * // Create a token that grants read access to a friend
  * const token = new BearerToken()

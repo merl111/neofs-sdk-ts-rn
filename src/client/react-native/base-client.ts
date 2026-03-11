@@ -2,8 +2,8 @@
  * Base service client with common functionality.
  */
 
-import { publicKeyBytes } from 'neofs-sdk-ts-core/crypto';
-import { ownerIdFromPublicKey } from 'neofs-sdk-ts-core/user';
+import { publicKeyBytes } from '@axlabs/neofs-sdk-ts-core/crypto';
+import { ownerIdFromPublicKey } from '@axlabs/neofs-sdk-ts-core/user';
 import { NeoFsV2Refs } from '../../gen-grpc-react-native/refs/types_types';
 import { NeoFsV2Session } from '../../gen-grpc-react-native/session/types_types';
 import { NeoFsV2Object } from '../../gen-grpc-react-native/object/types_types';

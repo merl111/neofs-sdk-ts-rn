@@ -2,7 +2,7 @@
  * React Native compatible NeoFS Reputation client.
  */
 
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 
 import { NeoFsV2Reputation } from '../../gen-grpc-react-native/reputation/types_types';
 import { ReputationServiceClient } from '../../gen-grpc-react-native/reputation/service_services';

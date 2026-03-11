@@ -1,5 +1,5 @@
 /**
- * Integration tests for grpc-react-native
+ * Integration tests for @merl1231/grpc-react-native
  * These tests connect to the public grpcb.in test server
  * 
  * NOTE: These tests require network connectivity and the grpcb.in service to be available
@@ -8,7 +8,7 @@
 
 /// <reference types="jest" />
 
-import { GrpcClient, GrpcStatusCode } from 'grpc-react-native';
+import { GrpcClient, GrpcStatusCode } from '@merl1231/grpc-react-native';
 import { HelloServiceClient } from '../src/generated/hello_services';
 import { HelloRequestImpl } from '../src/generated/hello_types';
 import { GRPCBinClient } from '../src/generated/grpcbin_services';

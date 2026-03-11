@@ -40,7 +40,7 @@ import {
   // Waiter import
   Waiter,
   ConfirmationTimeoutError,
-} from 'neofs-sdk-ts-react-native';
+} from 'neofs-sdk-ts-rn';
 
 // Helper to convert bytes to hex (React Native compatible)
 const bytesToHex = (bytes: Uint8Array): string => {

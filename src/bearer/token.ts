@@ -8,7 +8,7 @@
 import { NeoFsV2Acl } from '../gen-grpc-react-native/acl/types_types';
 import { NeoFsV2Refs } from '../gen-grpc-react-native/refs/types_types';
 import { Table } from '../eacl';
-import { Signer, publicKeyBytes } from 'neofs-sdk-ts-core/crypto';
+import { Signer, publicKeyBytes } from '@axlabs/neofs-sdk-ts-core/crypto';
 
 /**
  * Token lifetime parameters.

@@ -19,7 +19,7 @@ module.exports = {
     ],
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|grpc-react-native)/)',
+    'node_modules/(?!(react-native|@react-native|@merl1231/grpc-react-native)/)',
   ],
   moduleNameMapper: {
     '^react-native$': '<rootDir>/node_modules/react-native',

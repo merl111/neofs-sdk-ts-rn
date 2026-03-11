@@ -6,7 +6,7 @@
  * 
  * @example
  * ```typescript
- * import { ReactNativeNeoFSClient, Waiter } from 'neofs-sdk-ts-react-native';
+ * import { ReactNativeNeoFSClient, Waiter } from 'neofs-sdk-ts-rn';
  * 
  * const client = new ReactNativeNeoFSClient({ endpoint: 'grpc://...' });
  * const waiter = new Waiter(client);

@@ -2,7 +2,7 @@
  * User-friendly type definitions for the React Native NeoFS client.
  */
 
-import { Signer } from 'neofs-sdk-ts-core/crypto';
+import { Signer } from '@axlabs/neofs-sdk-ts-core/crypto';
 
 // ============================================================================
 // Configuration

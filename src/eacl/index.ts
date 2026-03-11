@@ -7,7 +7,7 @@
  *   Table, Target, Record, Filter, 
  *   Operation, Action, Match,
  *   publicReadEACL 
- * } from 'neofs-sdk-ts-react-native';
+ * } from 'neofs-sdk-ts-rn';
  * 
  * // Quick preset for public read
  * const eacl = publicReadEACL(containerId);

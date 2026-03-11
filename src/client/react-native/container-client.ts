@@ -2,9 +2,9 @@
  * React Native compatible NeoFS Container client.
  */
 
-import { GrpcClient } from 'grpc-react-native';
-import { publicKeyBytes } from 'neofs-sdk-ts-core/crypto';
-import { ContainerID } from 'neofs-sdk-ts-core/types';
+import { GrpcClient } from '@merl1231/grpc-react-native';
+import { publicKeyBytes } from '@axlabs/neofs-sdk-ts-core/crypto';
+import { ContainerID } from '@axlabs/neofs-sdk-ts-core/types';
 
 import { NeoFsV2Refs } from '../../gen-grpc-react-native/refs/types_types';
 import { NeoFsV2Container } from '../../gen-grpc-react-native/container/types_types';

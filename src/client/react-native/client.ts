@@ -2,7 +2,7 @@
  * Main React Native NeoFS client.
  */
 
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 
 import { ReactNativeClientConfig } from './types';
 import { ReactNativeObjectClient } from './object-client';

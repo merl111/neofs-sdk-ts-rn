@@ -12,7 +12,7 @@ A React Native compatible TypeScript SDK for interacting with the NeoFS decentra
 ## Installation
 
 ```bash
-npm install neofs-sdk-ts grpc-react-native
+npm install neofs-sdk-ts @merl1231/grpc-react-native
 ```
 
 ## Quick Start

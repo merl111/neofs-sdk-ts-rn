@@ -2,7 +2,7 @@
  * React Native compatible NeoFS Netmap client.
  */
 
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 
 import { NeoFsV2Refs } from '../../gen-grpc-react-native/refs/types_types';
 import { NeoFsV2Netmap } from '../../gen-grpc-react-native/netmap/types_types';

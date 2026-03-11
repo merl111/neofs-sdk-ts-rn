@@ -4,7 +4,7 @@ A React Native TypeScript SDK for [NeoFS](https://fs.neo.org/) - a decentralized
 
 ## Features
 
-- **React Native Compatible**: Works seamlessly with React Native via `grpc-react-native`
+- **React Native Compatible**: Works seamlessly with React Native via `@merl1231/grpc-react-native`
 - **User-Friendly API**: Simple, intuitive methods for common operations
 - **Full NeoFS Support**: Containers, objects, sessions, EACL, bearer tokens
 - **Type Safety**: Complete TypeScript definitions
@@ -13,7 +13,7 @@ A React Native TypeScript SDK for [NeoFS](https://fs.neo.org/) - a decentralized
 ## Installation
 
 ```bash
-npm install neofs-sdk-ts-react-native grpc-react-native
+npm install neofs-sdk-ts-rn @merl1231/grpc-react-native
 ```
 
 ### iOS Setup
@@ -29,7 +29,7 @@ No additional setup required.
 ## Quick Start
 
 ```typescript
-import { ReactNativeNeoFSClient, BasicACL, ECDSASigner } from 'neofs-sdk-ts-react-native';
+import { ReactNativeNeoFSClient, BasicACL, ECDSASigner } from 'neofs-sdk-ts-rn';
 
 // Create a signer from your private key
 const signer = ECDSASigner.fromHex(privateKeyHex);
@@ -76,7 +76,7 @@ try {
 ### Client Initialization
 
 ```typescript
-import { ReactNativeNeoFSClient, ECDSASigner } from 'neofs-sdk-ts-react-native';
+import { ReactNativeNeoFSClient, ECDSASigner } from 'neofs-sdk-ts-rn';
 
 // From hex private key
 const signer = ECDSASigner.fromHex('your-private-key-hex');
@@ -98,7 +98,7 @@ await client.connect();
 ### Container Operations
 
 ```typescript
-import { BasicACL } from 'neofs-sdk-ts-react-native';
+import { BasicACL } from 'neofs-sdk-ts-rn';
 
 // Create a container
 const containerId = await client.container().create({
@@ -146,7 +146,7 @@ const info = await client.object().getInfo(containerId, objectId);
 await client.object().remove(containerId, objectId);
 
 // Search objects
-import { MatchType } from 'neofs-sdk-ts-react-native';
+import { MatchType } from 'neofs-sdk-ts-rn';
 
 const objectIds = await client.object().find({
   containerId,
@@ -194,7 +194,7 @@ console.log('Session ID:', session.id);
 ### EACL (Extended Access Control)
 
 ```typescript
-import { Table, Target, Record, Operation, publicReadEACL } from 'neofs-sdk-ts-react-native';
+import { Table, Target, Record, Operation, publicReadEACL } from 'neofs-sdk-ts-rn';
 
 // Quick preset
 const eacl = publicReadEACL(containerId);
@@ -209,7 +209,7 @@ const customEacl = new Table(containerId)
 ### Bearer Tokens
 
 ```typescript
-import { BearerToken, publicReadEACL } from 'neofs-sdk-ts-react-native';
+import { BearerToken, publicReadEACL } from 'neofs-sdk-ts-rn';
 
 const token = new BearerToken()
   .setEACL(publicReadEACL(containerId))
@@ -228,7 +228,7 @@ const tokenBytes = token.serialize();
 ### Waiter (Async Confirmation)
 
 ```typescript
-import { Waiter } from 'neofs-sdk-ts-react-native';
+import { Waiter } from 'neofs-sdk-ts-rn';
 
 const waiter = new Waiter(client);
 
@@ -338,7 +338,7 @@ src/
 ## Crypto Package
 
 ```typescript
-import { ECDSASigner, ECDSASignerRFC6979 } from 'neofs-sdk-ts-react-native';
+import { ECDSASigner, ECDSASignerRFC6979 } from 'neofs-sdk-ts-rn';
 
 // ECDSA with SHA-512 (FIPS 186-3)
 const signer = ECDSASigner.generate();

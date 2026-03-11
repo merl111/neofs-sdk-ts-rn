@@ -1,6 +1,6 @@
 # React Native gRPC Integration Test App
 
-A React Native app for testing the `grpc-react-native` package with real-world gRPC servers.
+A React Native app for testing the `@merl1231/grpc-react-native` package with real-world gRPC servers.
 
 ## Overview
 
@@ -107,7 +107,7 @@ This generates TypeScript types and service clients from proto definitions.
 Example:
 
 ```typescript
-import { GrpcClient } from 'grpc-react-native';
+import { GrpcClient } from '@merl1231/grpc-react-native';
 import { GreeterClient } from './generated/hello_services';
 import { HelloRequestImpl } from './generated/hello_types';
 
