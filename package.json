@@ -1,5 +1,5 @@
 {
-  "name": "neofs-sdk-ts-rn",
+  "name": "@merl1231/neofs-sdk-ts-rn",
   "version": "0.1.0",
   "description": "TypeScript SDK for NeoFS - React Native Edition",
   "main": "dist/index.js",
