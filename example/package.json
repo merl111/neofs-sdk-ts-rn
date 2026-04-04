@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.83.1",
-    "@merl1231/grpc-react-native": "^0.0.1",
+    "@merl1231/grpc-react-native": "^0.1.1",
     "neofs-sdk-ts-rn": "file:..",
     "react": "19.2.0",
     "react-native": "0.83.1",

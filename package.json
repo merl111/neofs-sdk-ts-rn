@@ -1,6 +1,6 @@
 {
   "name": "@merl1231/neofs-sdk-ts-rn",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript SDK for NeoFS - React Native Edition",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -54,7 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.57.0",
-    "@merl1231/grpc-react-native": "file:../grpc-react-native/grpc-react-native",
+    "@merl1231/grpc-react-native": "^0.1.1",
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
@@ -71,7 +71,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "@merl1231/grpc-react-native": ">=0.1.0"
+    "@merl1231/grpc-react-native": ">=0.1.1"
   },
   "peerDependenciesMeta": {
     "@merl1231/grpc-react-native": {
