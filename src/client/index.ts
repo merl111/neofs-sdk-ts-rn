@@ -3,6 +3,7 @@
  */
 
 // React Native compatible clients (re-export everything from react-native directory)
+// NOTE: MatchType, ChecksumType, ObjectType are now canonical exports from core.
 export {
   // Main client
   ReactNativeNeoFSClient,
@@ -15,10 +16,8 @@ export {
   ReactNativeReputationClient,
   // Enums
   BasicACL,
-  MatchType,
-  ChecksumType,
-  ObjectType,
   NodeState,
+  ContainerSessionContext_Verb,
   // Types
   type ReactNativeClientConfig,
   type ContainerCreateOptions,

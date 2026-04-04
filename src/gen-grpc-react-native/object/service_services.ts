@@ -25,7 +25,8 @@ export class ObjectServiceClient {
   async put(requests: AsyncIterable<PutRequestImpl>): Promise<PutResponseImpl> {
     async function* serialize() {
       for await (const req of requests) {
-        yield req.serializeBinary();
+        // Dense copy: Hermes/grpc bridge can choke on protobuf subviews.
+        yield new Uint8Array(req.serializeBinary());
       }
     }
     const response = await this.client.clientStreamCall(

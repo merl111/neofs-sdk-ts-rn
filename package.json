@@ -54,14 +54,18 @@
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.57.0",
-    "@merl1231/grpc-react-native": "^0.0.2",
+    "@merl1231/grpc-react-native": "file:../grpc-react-native/grpc-react-native",
     "jest": "^29.7.0",
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@axlabs/neofs-sdk-ts-core": "^0.0.1"
+    "@axlabs/neofs-sdk-ts-core": "^0.0.2",
+    "@babel/runtime": "^7.25.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist"

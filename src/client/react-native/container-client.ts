@@ -4,6 +4,7 @@
 
 import { GrpcClient } from '@merl1231/grpc-react-native';
 import { publicKeyBytes } from '@axlabs/neofs-sdk-ts-core/crypto';
+import { sha256 } from '@axlabs/neofs-sdk-ts-core/utils';
 import { ContainerID } from '@axlabs/neofs-sdk-ts-core/types';
 
 import { NeoFsV2Refs } from '../../gen-grpc-react-native/refs/types_types';
@@ -111,7 +112,13 @@ export class ReactNativeContainerClient extends BaseServiceClient {
     });
 
     const result = await this.put(container, containerSignature);
-    return result.value;
+    // NeoFS container ID is SHA-256 of the marshaled container. Some nodes return
+    // an empty ContainerId in PutResponse; derive it locally (matches neofs-sdk-go cid.NewFromMarshalledContainer).
+    const id = result.value;
+    if (!id || id.length === 0) {
+      return sha256(containerBytes);
+    }
+    return id;
   }
 
   /**
@@ -377,8 +384,7 @@ export class ReactNativeContainerClient extends BaseServiceClient {
 
     const request = new SetAttributeRequestImpl({ Body: body, BodySignature: bodySignature });
     const response = await this.serviceClient.setAttribute(request);
-    // These messages have Status in Body instead of MetaHeader
-    const status = response.Body?.Status;
+    const status = response.Status;
     if (status && status.Code !== 0) {
       const { NeoFSError } = await import('./base-client');
       throw new NeoFSError(status.Code, status.Message || 'Unknown error');
@@ -406,8 +412,7 @@ export class ReactNativeContainerClient extends BaseServiceClient {
 
     const request = new RemoveAttributeRequestImpl({ Body: body, BodySignature: bodySignature });
     const response = await this.serviceClient.removeAttribute(request);
-    // These messages have Status in Body instead of MetaHeader
-    const status = response.Body?.Status;
+    const status = response.Status;
     if (status && status.Code !== 0) {
       const { NeoFSError } = await import('./base-client');
       throw new NeoFSError(status.Code, status.Message || 'Unknown error');

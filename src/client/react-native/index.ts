@@ -10,19 +10,17 @@ export { ReactNativeObjectClient } from './object-client';
 export { ReactNativeContainerClient } from './container-client';
 export { ReactNativeAccountingClient } from './accounting-client';
 export { ReactNativeNetmapClient } from './netmap-client';
-export { ReactNativeSessionClient } from './session-client';
+export { ReactNativeSessionClient, ContainerSessionContext_Verb } from './session-client';
 export { ReactNativeReputationClient } from './reputation-client';
 
 // Error class and request options
 export { NeoFSError, type RequestOptions } from './base-client';
 
 // Types and enums
+// NOTE: MatchType, ChecksumType, ObjectType are exported from core via the main index.
 export {
   // Enums
   BasicACL,
-  MatchType,
-  ChecksumType,
-  ObjectType,
   NodeState,
   // Configuration
   type ReactNativeClientConfig,

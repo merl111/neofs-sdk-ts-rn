@@ -65,17 +65,22 @@ export class ReactNativeObjectClient extends BaseServiceClient {
    * Upload an object to NeoFS.
    */
   async upload(options: ObjectPutOptions): Promise<Uint8Array> {
-    const attributes: ObjectAttribute[] = [...(options.attributes || [])];
-
+    // One attribute per key — NeoFS rejects duplicates (e.g. two FileName).
+    const byKey = new Map<string, ObjectAttribute>();
+    for (const attr of options.attributes || []) {
+      byKey.set(attr.key, attr);
+    }
     if (options.filename) {
-      attributes.push({ key: 'FileName', value: options.filename });
+      byKey.set('FileName', { key: 'FileName', value: options.filename });
     }
-
     if (options.contentType) {
-      attributes.push({ key: 'ContentType', value: options.contentType });
+      byKey.set('ContentType', { key: 'ContentType', value: options.contentType });
     }
-
-    attributes.push({ key: 'Timestamp', value: Math.floor(Date.now() / 1000).toString() });
+    byKey.set('Timestamp', {
+      key: 'Timestamp',
+      value: Math.floor(Date.now() / 1000).toString(),
+    });
+    const attributes = [...byKey.values()];
 
     const result = await this.put(
       { value: options.containerId },
@@ -242,8 +247,13 @@ export class ReactNativeObjectClient extends BaseServiceClient {
     containerId: ContainerID,
     payload: Uint8Array,
     attributes?: ObjectAttribute[],
-    chunkSize: number = 1024 * 1024
+    chunkSize: number = 64 * 1024
   ): Promise<ObjectID> {
+    // Always dense 0-offset copy: Hermes + grpc-react-native base64 path is sensitive to subviews.
+    const dense = new Uint8Array(payload.byteLength);
+    dense.set(payload);
+    payload = dense;
+
     // Calculate payload checksum (SHA256)
     const payloadChecksum = sha256(payload);
     
@@ -303,7 +313,9 @@ export class ReactNativeObjectClient extends BaseServiceClient {
       });
 
       for (let offset = 0; offset < payload.length; offset += chunkSize) {
-        const chunk = payload.slice(offset, Math.min(offset + chunkSize, payload.length));
+        const end = Math.min(offset + chunkSize, payload.length);
+        const chunk = new Uint8Array(end - offset);
+        chunk.set(payload.subarray(offset, end));
         const chunkBody = new PutRequest_BodyImpl({ Chunk: chunk });
         const chunkMetaHeader = self.createMetaHeader();
         yield new PutRequestImpl({

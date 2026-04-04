@@ -3,6 +3,15 @@
  */
 
 import { Signer } from '@axlabs/neofs-sdk-ts-core/crypto';
+import {
+  MatchType,
+  ChecksumType,
+  ObjectType,
+} from '@axlabs/neofs-sdk-ts-core';
+import type { ObjectAttribute } from '@axlabs/neofs-sdk-ts-core';
+
+export { MatchType, ChecksumType, ObjectType };
+export type { ObjectAttribute };
 
 // ============================================================================
 // Configuration
@@ -43,50 +52,6 @@ export enum BasicACL {
 }
 
 /**
- * Search filter match types.
- */
-export enum MatchType {
-  /** String equality */
-  STRING_EQUAL = 0,
-  /** String not equal */
-  STRING_NOT_EQUAL = 1,
-  /** Key not present */
-  NOT_PRESENT = 2,
-  /** Common prefix */
-  COMMON_PREFIX = 3,
-  /** Numeric greater than */
-  NUM_GT = 4,
-  /** Numeric greater than or equal */
-  NUM_GE = 5,
-  /** Numeric less than */
-  NUM_LT = 6,
-  /** Numeric less than or equal */
-  NUM_LE = 7,
-}
-
-/**
- * Checksum types.
- */
-export enum ChecksumType {
-  UNKNOWN = 0,
-  /** Tillich-Zémor homomorphic hash */
-  TZ = 1,
-  /** SHA-256 */
-  SHA256 = 2,
-}
-
-/**
- * Object type.
- */
-export enum ObjectType {
-  REGULAR = 0,
-  TOMBSTONE = 1,
-  STORAGE_GROUP = 2,
-  LOCK = 3,
-  LINK = 4,
-}
-
-/**
  * Node state.
  */
 export enum NodeState {
@@ -99,14 +64,6 @@ export enum NodeState {
 // ============================================================================
 // Data Interfaces
 // ============================================================================
-
-/**
- * Object attribute.
- */
-export interface ObjectAttribute {
-  key: string;
-  value: string;
-}
 
 /**
  * Object header information (user-friendly).

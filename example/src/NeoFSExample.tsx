@@ -69,7 +69,7 @@ interface LogEntry {
 
 export default function NeoFSExample() {
   const [host, setHost] = useState('st1.t5.fs.neo.org');
-  const [port, setPort] = useState('8080');
+  const [port, setPort] = useState('8082');
   const [wif, setWif] = useState('');
   const [connected, setConnected] = useState(false);
   const [logs, setLogs] = useState<LogEntry[]>([]);
@@ -147,7 +147,7 @@ export default function NeoFSExample() {
         host,
         port: parseInt(port, 10),
         signer,
-        useTls: false,
+        useTls: true,
       });
 
       await newClient.connect();

@@ -7,7 +7,15 @@
  */
 
 import { ReactNativeNeoFSClient, ContainerCreateOptions, ObjectPutOptions } from '../client';
-import { NeoFSError } from '../client/react-native/base-client';
+
+/** NeoFS status from thrown errors (instanceof NeoFSError may fail across bundles / Hermes). */
+function neofsStatusCode(error: unknown): number | undefined {
+  if (error && typeof error === 'object' && 'code' in error) {
+    const c = (error as { code?: unknown }).code;
+    return typeof c === 'number' ? c : undefined;
+  }
+  return undefined;
+}
 
 /**
  * Default interval between confirmation checks (in milliseconds).
@@ -151,7 +159,7 @@ export class Waiter {
             ? { status: 'success' } 
             : { status: 'retry' };
         } catch (error) {
-          if (error instanceof NeoFSError && error.code === 3072) {
+          if (neofsStatusCode(error) === 3072) {
             // Container not found - keep polling (expected during propagation)
             return { status: 'retry' };
           }
@@ -191,7 +199,7 @@ export class Waiter {
             ? { status: 'success' } 
             : { status: 'retry' };
         } catch (error) {
-          if (error instanceof NeoFSError && error.code === 3072) {
+          if (neofsStatusCode(error) === 3072) {
             // Container not found - success!
             return { status: 'success' };
           }
@@ -230,7 +238,7 @@ export class Waiter {
             ? { status: 'success' } 
             : { status: 'retry' };
         } catch (error) {
-          if (error instanceof NeoFSError && error.code === 2049) {
+          if (neofsStatusCode(error) === 2049) {
             // Object not found - keep polling (expected during propagation)
             return { status: 'retry' };
           }
@@ -272,7 +280,7 @@ export class Waiter {
             ? { status: 'success' } 
             : { status: 'retry' };
         } catch (error) {
-          if (error instanceof NeoFSError && error.code === 2049) {
+          if (neofsStatusCode(error) === 2049) {
             // Object not found - success!
             return { status: 'success' };
           }
