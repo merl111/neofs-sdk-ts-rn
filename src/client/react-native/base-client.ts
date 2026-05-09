@@ -60,7 +60,7 @@ export abstract class BaseServiceClient {
    */
   protected createMetaHeader(options?: RequestOptions): NeoFsV2Session.RequestMetaHeaderImpl {
     const header = new NeoFsV2Session.RequestMetaHeaderImpl({
-      Version: new NeoFsV2Refs.VersionImpl({ Major: 2, Minor: 18 }),
+      Version: new NeoFsV2Refs.VersionImpl({ Major: 2, Minor: 22 }),
       Ttl: 2,
     });
 

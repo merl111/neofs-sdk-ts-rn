@@ -10,6 +10,8 @@ import {
 } from '@axlabs/neofs-sdk-ts-core';
 import type { ObjectAttribute } from '@axlabs/neofs-sdk-ts-core';
 
+import type { NeoFsV2Netmap } from '../../gen-grpc-react-native/netmap/types_types';
+
 export { MatchType, ChecksumType, ObjectType };
 export type { ObjectAttribute };
 
@@ -129,6 +131,10 @@ export interface ContainerCreateOptions {
   basicAcl?: BasicACL | number;
   /** Placement policy (e.g., "REP 2 IN X CBF 3 SELECT 2 FROM * AS X") */
   placementPolicy?: string;
+  /**
+   * Initial placement rules ([NeoFS v2.22 `PlacementPolicy.initial`](https://github.com/nspcc-dev/neofs-api/releases/tag/v2.22.0)).
+   */
+  placementPolicyInitial?: NeoFsV2Netmap.PlacementPolicy_Initial;
   /** Container attributes (key-value pairs) */
   attributes?: ObjectAttribute[];
   /** Container name (convenience, adds Name attribute) */

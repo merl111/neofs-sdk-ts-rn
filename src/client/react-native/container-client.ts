@@ -66,6 +66,7 @@ export class ReactNativeContainerClient extends BaseServiceClient {
     const {
       basicAcl = BasicACL.PRIVATE,
       placementPolicy = 'REP 2',
+      placementPolicyInitial,
       attributes = [],
       name,
       nonce,
@@ -95,8 +96,15 @@ export class ReactNativeContainerClient extends BaseServiceClient {
     const containerNonce = nonce || this.generateNonce();
     const policy = this.parsePlacementPolicy(placementPolicy);
 
+    if (placementPolicyInitial) {
+      policy.Initial =
+        placementPolicyInitial instanceof NeoFsV2Netmap.PlacementPolicy_InitialImpl
+          ? placementPolicyInitial
+          : new NeoFsV2Netmap.PlacementPolicy_InitialImpl(placementPolicyInitial);
+    }
+
     const container = new NeoFsV2Container.ContainerImpl({
-      Version: new NeoFsV2Refs.VersionImpl({ Major: 2, Minor: 18 }),
+      Version: new NeoFsV2Refs.VersionImpl({ Major: 2, Minor: 22 }),
       OwnerId: this.getOwnerID(),
       Nonce: containerNonce,
       BasicAcl: basicAcl,
